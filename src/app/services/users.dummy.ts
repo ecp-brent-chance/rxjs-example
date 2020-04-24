@@ -1,5 +1,5 @@
 
-import { User, UserRole } from 'src/app/models/user.model';
+import { User, UserRole } from '../models/user.model';
 
 let nextUserCount = 0;
 export const dummyUsers: User[] = [
