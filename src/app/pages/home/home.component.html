@@ -1,0 +1,33 @@
+<ng-container *ngIf="users.active$ | async as active">
+  <div class="container p-4 shadow">
+    <div class="row">
+      <div class="col">
+        <h1>{{active.first}}&nbsp;{{active.last}}</h1>
+      </div>
+      <!-- <div class="col">
+        <h4>{{active.role}}</h4>
+      </div> -->
+    </div>
+    <div class="row">
+      <div class="col">
+        <h6 class="m-0 text-muted">Last Visited</h6>
+        <div>
+          <ng-container *ngIf="active.lastVisit; else na">
+            <span>{{ active.lastVisit | date}}</span>
+          </ng-container>
+        </div>
+      </div>
+      <div class="col">
+        <h6 class="m-0 text-muted">Balance</h6>
+        <div>
+          <ng-container *ngIf="active.balance !== null; else na">
+            <span>{{ active.balance | currency}}</span>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <ng-template #na>
+      <i>N/A</i>
+    </ng-template>
+  </div>
+</ng-container>

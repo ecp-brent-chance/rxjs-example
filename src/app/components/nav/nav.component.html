@@ -1,0 +1,43 @@
+<div class="bg-primary text-light">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h1>
+          RxJS Example
+        </h1>
+      </div>
+      <div class="col d-flex justify-content-end">
+        <ng-container *ngIf="users.loggedIn$ | async as loggedIn">
+          <ng-container *ngIf="users.active$ | async as active">
+            <div class="p-2">
+              <sub>Hello</sub>
+              <div>
+                {{ loggedIn.first }}&nbsp;{{ loggedIn.last }}
+              </div>
+            </div>
+            <div ngbDropdown class="d-inline-block">
+              <sub>Impersonating</sub>
+              <br>
+              <button
+                ngbDropdownToggle
+                class="btn btn-outline-light"
+              >
+                {{ active.first }}&nbsp;{{ active.last }}
+              </button>
+              <div ngbDropdownMenu>
+                <button
+                  ngbDropdownItem
+                  *ngFor="let lookup of users.lookupUsers$ | async"
+                  (focus)="users.selectActiveUserById(lookup.id)"
+                  (click)="users.selectActiveUserById(lookup.id)"
+                >
+                  {{ lookup.first }}&nbsp;{{ lookup.last }}
+                </button>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
